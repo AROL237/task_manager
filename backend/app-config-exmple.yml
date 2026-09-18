@@ -1,0 +1,13 @@
+ACTIVE_ENV: dev
+## Configuration properties.
+
+## MYSQL CONFIGURATION ENV VALUES.
+
+## production database ddl-auto generation.
+DDL_AUTO_SCHEMA: update
+MYSQL_PORT: 3306
+
+## JWT CONFIG PROPERTIES size min 256 bits
+JWT_SECRET_HASH: ZUk0dU9Ma2gydmRLclNyVFBLMllYVVpLY1R0QXFyYXB6dGJ0SHIya3FwQw==
+### TOKEN EXPIRATION TIME unit: days
+JWT_EXPIRY_TIME: 7

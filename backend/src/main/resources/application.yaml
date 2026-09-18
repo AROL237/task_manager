@@ -9,9 +9,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: ${DDL_AUTO_SCHEMA}
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform:
   datasource:
-    url: jdbc:postgresql://localhost:${POSTGRES_PORT}/${POSTGRES_DB}
-    username: ${POSTGRES_USER}
-    password: ${POSTGRES_PASSWORD}
+    url: jdbc:mysql://localhost:${MYSQL_PORT}/${MYSQL_DATABASE}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
 

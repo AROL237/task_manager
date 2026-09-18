@@ -1,13 +1,13 @@
 services:
   database:
-    image: postgres:latest
+    image: mysql:latest
     env_file:
       - db-secret.env
     restart: always
     ports:
-      - 5432:5432
+      - 3306:3306
     volumes:
-      - cova_data:/var/lib/postgres/data
+      - cova_data:/var/lib/mysql
     networks:
       cova:
   admina:
