@@ -1,0 +1,13 @@
+2026.09.18 19:59:10 INFO  Started: Metals version 1.6.9 in folders 'C:\Users\AROLSIGNINGNZONKEM\IdeaProjects\TEST-COVA' for client Visual Studio Code 1.137.0.
+2026.09.18 19:59:10 INFO  Memory monitor started
+2026.09.18 19:59:10 WARN  Using H2 2.5.250 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.09.18 20:00:53 INFO  no build target found for C:\Users\AROLSIGNINGNZONKEM\IdeaProjects\TEST-COVA\backend\src\main\java\com\cova\core\controller\TaskController.java. Using fallback presentation compiler.
+2026.09.18 20:01:10 INFO  no build target found for C:\Users\AROLSIGNINGNZONKEM\IdeaProjects\TEST-COVA\backend\src\main\java\com\cova\core\dto\Filter.java. Using fallback presentation compiler.
+2026.09.18 20:24:12 INFO  no build target found for C:\Users\AROLSIGNINGNZONKEM\IdeaProjects\TEST-COVA\backend\src\main\java\com\cova\core\dto\CreateTaskDto.java. Using fallback presentation compiler.
+2026.09.18 20:24:12 INFO  no build target found for C:\Users\AROLSIGNINGNZONKEM\IdeaProjects\TEST-COVA\backend\src\main\java\com\cova\core\dto\CreateTaskDto.java. Using fallback presentation compiler.
+2026.09.18 20:24:12 INFO  no build target found for C:\Users\AROLSIGNINGNZONKEM\IdeaProjects\TEST-COVA\backend\src\main\java\com\cova\core\dto\CreateTaskDto.java. Using fallback presentation compiler.
+2026.09.18 20:24:12 INFO  no build target found for C:\Users\AROLSIGNINGNZONKEM\IdeaProjects\TEST-COVA\backend\src\main\java\com\cova\core\dto\CreateTaskDto.java. Using fallback presentation compiler.
+2026.09.18 20:24:12 INFO  no build target found for C:\Users\AROLSIGNINGNZONKEM\IdeaProjects\TEST-COVA\backend\src\main\java\com\cova\core\dto\CreateTaskDto.java. Using fallback presentation compiler.
+2026.09.18 20:24:13 INFO  no build target found for C:\Users\AROLSIGNINGNZONKEM\IdeaProjects\TEST-COVA\backend\src\main\java\com\cova\core\dto\CreateTaskDto.java. Using fallback presentation compiler.
+2026.09.18 20:27:04 INFO  no build target found for C:\Users\AROLSIGNINGNZONKEM\IdeaProjects\TEST-COVA\backend\src\main\java\com\cova\core\dto\CreateTaskDto.java. Using fallback presentation compiler.
+2026.09.18 20:27:04 INFO  no build target found for C:\Users\AROLSIGNINGNZONKEM\IdeaProjects\TEST-COVA\backend\src\main\java\com\cova\core\entities\Task.java. Using fallback presentation compiler.
