@@ -1,0 +1,26 @@
+services:
+  database:
+    image: postgres:latest
+    env_file:
+      - db-secret.env
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - cova_data:/var/lib/postgres/data
+    networks:
+      cova:
+  admina:
+    image: adminer
+    ports:
+      - 8585:8080
+    depends_on:
+      - database
+    restart: always
+    networks:
+      cova:
+
+volumes:
+  cova_data:
+networks:
+  cova:

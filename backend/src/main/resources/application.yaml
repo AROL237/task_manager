@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: TM-API
+  config:
+    import: "file:./db-secret.env[.properties],file:./app-config.yml[.properties]"
+  profiles:
+    active: ${ACTIVE_ENV}
+    ### DATABASE CONFIG PROPERTIES.
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO_SCHEMA}
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:${POSTGRES_PORT}/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+
