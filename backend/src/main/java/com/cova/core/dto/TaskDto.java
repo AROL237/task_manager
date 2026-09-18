@@ -21,12 +21,7 @@ public class TaskDto implements Serializable, Function<Task,TaskDto> {
     private String description;
     private Boolean status;
 
-//    public void   setTask(Task task) {
-//        this.id = String.valueOf(task.getId());
-//        this.title = task.getTitle();
-//        this.description = task.getDescription();
-//        this.status = String.valueOf(task.getStatus());
-//    }
+
 
 
     @Override

@@ -1,6 +1,7 @@
 package com.cova.core.entities;
 
 import com.cova.core.dto.TaskDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,6 +31,7 @@ public class Task  {
     private Boolean status = true;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "owner",referencedColumnName = "id")
     private User user;
 

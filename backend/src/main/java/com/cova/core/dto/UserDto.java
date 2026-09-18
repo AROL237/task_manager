@@ -14,17 +14,8 @@ import java.util.function.Function;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto implements Serializable, Function<User, UserDto>  {
-    @Override
-    public UserDto apply(User user) {
-        return new UserDto(
-                user.getId(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getEmail(),
-                user.getGender()
-        );
-    }
+public class UserDto implements Serializable {
+
 
     private Long id;
     private String firstName;
