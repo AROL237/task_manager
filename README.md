@@ -19,6 +19,10 @@
     -this will pull image and `signing/tm_ui:0.0.1` and `signig/tm_api:0.0.1` from my docker hub repo.
     - for a complete CICD pipeline, i will write a `jenkins server` . to setup the this process to be triggered on a push request.
 
+    - make sure to opp the port :8080  on your server,
+     so that the app can be accessible from your browser.
+     `your-server-ip:8080/`
+
 
 4.
 
