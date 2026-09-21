@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 ARG VITE_BASE_URL
-ENV VITE_BASE_URL=${VITE_BASE_URL}
+ENV VITE_BASE_URL="/api"
 
 # Build the Next.js app
 RUN npm run build
@@ -23,7 +23,7 @@ COPY --from=builder /app ./
 
 EXPOSE 3000
 
-CMD ["npm","run" ,"preview --host 0.0.0.0 --port 3000"]
+CMD ["npm","run" ,"preview"]
 
 
 

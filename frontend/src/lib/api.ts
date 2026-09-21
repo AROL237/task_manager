@@ -12,9 +12,14 @@ export async function fetchApi<T>(
   const response = await fetch(BASE_URL + urlPath, options);
 
   if (!response.ok) {
-    throw new Error(
-      `Request failed: ${response.status} ${response.statusText}`,
-    );
+    let message = `Request failed: ${response.status} ${response.statusText}`;
+
+    try {
+      const errorResponse = (await response.json()) as Partial<ApiResponse>;
+      if (errorResponse.message) message = String(errorResponse.message);
+    } catch {}
+
+    throw new Error(message);
   }
 
   return (await response.json()) as T;

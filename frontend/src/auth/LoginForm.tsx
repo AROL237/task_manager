@@ -9,6 +9,12 @@ import {
 import Container from "@/components/ui/custom/Container";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
+import RegistrationForm from "./RegistrationForm";
 
 import { useEffect, useState, type ChangeEvent } from "react";
 import { fetchApi } from "@/lib/api";
@@ -20,6 +26,9 @@ type LoginPageProps = {
 };
 
 export default function LoginPage({ loadUser }: LoginPageProps) {
+  const [registrationOpen, setRegistrationOpen] = useState(false);
+  const [loginError, setLoginError] = useState("");
+  const [registrationMessage, setRegistrationMessage] = useState("");
   const [payload, setPayload] = useState<LoginPayload>({
     username: "",
     password: "",
@@ -36,19 +45,34 @@ export default function LoginPage({ loadUser }: LoginPageProps) {
   }
 
   async function login() {
-    const url = `/auth/login?username=${payload.username.trim()}&password=${payload.password.trim()}`;
-    const response: ApiResponse = await fetchApi<ApiResponse>(url, {
-      method: "POST",
-      headers: { "content-Type": "application/json" },
-    });
+    setLoginError("");
 
-    if (response.code == 200) {
-      let accessToken: String = response.data.accessToken;
+    try {
+      const url = `/auth/login?username=${payload.username.trim()}&password=${payload.password.trim()}`;
+      const response: ApiResponse = await fetchApi<ApiResponse>(url, {
+        method: "POST",
+        headers: { "content-Type": "application/json" },
+      });
 
-      localStorage.setItem("TM_DATA", accessToken.toString());
-      loadUser(accessToken);
+      if (response.code == 401 || response.code == 403) {
+        setLoginError(
+          response.message
+            ? String(response.message)
+            : "Invalid login credentials.",
+        );
+        return;
+      }
 
-      return;
+      if (response.code == 200) {
+        const accessToken: string = String(response.data.accessToken);
+
+        localStorage.setItem("TM_DATA", accessToken);
+        loadUser(accessToken);
+      }
+    } catch (error) {
+      setLoginError(
+        error instanceof Error ? error.message : "Unable to log in.",
+      );
     }
   }
 
@@ -56,7 +80,22 @@ export default function LoginPage({ loadUser }: LoginPageProps) {
     localStorage.removeItem("TM_DATA");
   }, []);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (!loginError) return;
+
+    const timeoutId = window.setTimeout(() => setLoginError(""), 3000);
+    return () => window.clearTimeout(timeoutId);
+  }, [loginError]);
+
+  useEffect(() => {
+    if (!registrationMessage) return;
+
+    const timeoutId = window.setTimeout(
+      () => setRegistrationMessage(""),
+      3000,
+    );
+    return () => window.clearTimeout(timeoutId);
+  }, [registrationMessage]);
 
   return (
     <Container
@@ -70,6 +109,18 @@ export default function LoginPage({ loadUser }: LoginPageProps) {
               <CardTitle className="mx-auto ">Login</CardTitle>
             </CardHeader>
             <CardContent>
+              {loginError && (
+                <Alert variant="destructive" className="mb-4">
+                  <AlertTitle>Login failed</AlertTitle>
+                  <AlertDescription>{loginError}</AlertDescription>
+                </Alert>
+              )}
+              {registrationMessage && (
+                <Alert variant="success" className="mb-4">
+                  <AlertTitle>Registration successful</AlertTitle>
+                  <AlertDescription>{registrationMessage}</AlertDescription>
+                </Alert>
+              )}
               <Field>
                 <FieldLabel htmlFor="username">email</FieldLabel>
                 <Input
@@ -92,27 +143,45 @@ export default function LoginPage({ loadUser }: LoginPageProps) {
                 />
               </Field>
             </CardContent>
-            <CardAction className=" flex flex-row w-full justify-center gap-5">
-              <Button
-                className={"btn shadow-gold"}
-                type="reset"
-                variant={"outline"}
-                size={"sm"}
-              >
-                reset
-              </Button>
-              <Button
-                className={"btn shadow-gold"}
-                variant={"default"}
-                onClick={login}
-                size={"sm"}
-              >
-                submit
-              </Button>
+            <CardAction className="flex w-full flex-col items-center gap-2">
+              <div className="flex flex-row justify-center gap-5">
+                <Button
+                  className={"btn shadow-gold"}
+                  type="reset"
+                  variant={"outline"}
+                  size={"sm"}
+                >
+                  reset
+                </Button>
+                <Button
+                  className={"btn shadow-gold"}
+                  variant={"default"}
+                  onClick={login}
+                  size={"sm"}
+                >
+                  submit
+                </Button>
+              </div>
+              <div className="flex w-full justify-end">
+                <Button
+                  type="button"
+                  variant="link"
+                  size="xs"
+                  className="text-amber-500 underline"
+                  onClick={() => setRegistrationOpen(true)}
+                >
+                  Register
+                </Button>
+              </div>
             </CardAction>
           </Card>
         </div>
       </div>
+      <RegistrationForm
+        open={registrationOpen}
+        onOpenChange={setRegistrationOpen}
+        onSuccess={setRegistrationMessage}
+      />
     </Container>
   );
 }
