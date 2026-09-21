@@ -9,11 +9,7 @@ import {
 import Container from "@/components/ui/custom/Container";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import RegistrationForm from "./RegistrationForm";
 
 import { useEffect, useState, type ChangeEvent } from "react";
@@ -90,10 +86,7 @@ export default function LoginPage({ loadUser }: LoginPageProps) {
   useEffect(() => {
     if (!registrationMessage) return;
 
-    const timeoutId = window.setTimeout(
-      () => setRegistrationMessage(""),
-      3000,
-    );
+    const timeoutId = window.setTimeout(() => setRegistrationMessage(""), 3000);
     return () => window.clearTimeout(timeoutId);
   }, [registrationMessage]);
 
