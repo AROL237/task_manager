@@ -1,6 +1,6 @@
 services:
   database:
-    image: mysql:latest
+    image: mysql:8.0-debian
     env_file:
       - db-secret.env
     restart: always
@@ -19,7 +19,6 @@ services:
     restart: always
     networks:
       cova:
-
 volumes:
   cova_data:
 networks:

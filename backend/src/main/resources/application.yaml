@@ -1,17 +1,19 @@
+server:
+  port: 8000
+
 spring:
   application:
     name: TM-API
-  config:
-    import: "file:./db-secret.env[.properties],file:./app-config.yml[.properties]"
   profiles:
-    active: ${ACTIVE_ENV}
+    active: ${ACTIVE_ENV:dev}
+
     ### DATABASE CONFIG PROPERTIES.
   jpa:
     hibernate:
-      ddl-auto: ${DDL_AUTO_SCHEMA}
-    database-platform:
+      ddl-auto: ${DDL_AUTO_SCHEMA:update}
+    database-platform: org.hibernate.dialect.MySQLDialect
   datasource:
-    url: jdbc:mysql://localhost:${MYSQL_PORT}/${MYSQL_DATABASE}
-    username: ${MYSQL_USER}
-    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:tm-db}
+    username: ${MYSQL_USER:dev_user}
+    password: ${MYSQL_PASSWORD:cova}
 
