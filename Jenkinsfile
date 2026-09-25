@@ -3,7 +3,7 @@ pipeline {
     environment{
         ACTIVE_ENV="prod"
         TAG="v0.0.${BUILD_NUMBER}"
-        PROD_KEY= credentials('prod-server-cred')
+        PROD_KEY= credentials('prod-server--cred')
         
 
     }
