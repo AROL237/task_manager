@@ -9,15 +9,13 @@ pipeline {
     }
     stages {
             stage('Build') {
-                agent { label 'worker1'                }
+                agent { label 'worker1' }
                 
                 steps {
 
                    sh '''
                         docker --version
                    '''
-                        // docker build -t tm_ui:${TAG} ./frontend
-                        // docker build -t tm_api:${TAG} ./backend
                 }
             }
             stage("Deploy"){
