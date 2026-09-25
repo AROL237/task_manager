@@ -1,7 +1,7 @@
 pipeline {
     agent none
     environment{
-        ACTIVE_ENV=prod
+        ACTIVE_ENV="prod"
 
     }
     stages {
