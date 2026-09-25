@@ -2,7 +2,7 @@ pipeline {
     agent none
     environment{
         ACTIVE_ENV=prod
-        vite
+
     }
     stages {
             stage('Frontend -- Build') {
